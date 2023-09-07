@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demoWPF", "demoWPF\demoWPF.csproj", "{C44A9C2E-F0BF-46E1-8F5C-FEAA1A101955}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideBar", "SideBar\SideBar.csproj", "{AF424B47-1CD6-41F5-BDFA-ECCAB82E75C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C44A9C2E-F0BF-46E1-8F5C-FEAA1A101955}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C44A9C2E-F0BF-46E1-8F5C-FEAA1A101955}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C44A9C2E-F0BF-46E1-8F5C-FEAA1A101955}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF424B47-1CD6-41F5-BDFA-ECCAB82E75C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF424B47-1CD6-41F5-BDFA-ECCAB82E75C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF424B47-1CD6-41F5-BDFA-ECCAB82E75C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF424B47-1CD6-41F5-BDFA-ECCAB82E75C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
