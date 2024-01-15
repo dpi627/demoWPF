@@ -5,8 +5,54 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:demoWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow" Height="450" Width="400">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="檔案" />
+            <MenuItem Header="編輯" />
+            <MenuItem Header="檢視" />
+        </Menu>
+        <StackPanel DockPanel.Dock="Bottom"
+                Orientation="Horizontal"
+                Background="LightGray">
+            <Label Content="狀態列" />
+        </StackPanel>
+        <Border BorderThickness="2"
+            BorderBrush="Gray"
+            DockPanel.Dock="Left">
+            <DockPanel Background="LightGray">
+                <Label Content="工具箱"
+               Background="DodgerBlue"
+               Foreground="White"
+               HorizontalContentAlignment="Center"
+               DockPanel.Dock="Top" />
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Button"
+                  Width="80"
+                  Margin="5" />
+                    <Button Content="Label"
+                  Width="80"
+                  Margin="5" />
+                    <Button Content="TextBox"
+                  Width="80"
+                  Margin="5" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <Border BorderThickness="2"
+            BorderBrush="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0"
+               Source="/Capture.png"
+               Stretch="Fill" />
+                <Image Grid.Row="1"
+               Source="/Capture1.png"
+               Stretch="Fill" />
+            </Grid>
+        </Border>
+    </DockPanel>
 </Window>
