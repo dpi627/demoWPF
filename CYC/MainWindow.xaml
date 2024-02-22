@@ -1,0 +1,16 @@
+﻿<Window x:Class="CYC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CYC"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="300">
+    <Window.DataContext>
+        <local:MyDataContext />
+    </Window.DataContext>
+    <StackPanel>
+        <TextBlock Text="{Binding MyValue}" TextAlignment="Center" Margin="20" />
+        <Slider Value="{Binding MyValue, Mode=TwoWay}" Width="200"/>
+    </StackPanel>
+</Window>
