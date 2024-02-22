@@ -20,5 +20,11 @@ namespace CYC
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dataContext = slider.DataContext as MyDataContext;
+            dataContext.MyValue += 1;
+        }
     }
 }
