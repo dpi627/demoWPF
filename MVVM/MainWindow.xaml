@@ -14,7 +14,8 @@
         <Label Content="{Binding Message}"/>
         <Button Width="160"
                 Content="Change Message"
-                Command="{Binding ChangeMessage}"/>
+                Command="{Binding ChangeMessage}"
+                CommandParameter="123-456"/>
         <TextBlock Text="{Binding MyValue}" TextAlignment="Center" Margin="20" />
         <Slider Name="slider" Value="{Binding MyValue, Mode=TwoWay}" Width="200"/>
         <Button Content="+1" Click="Button_Click" Width="100" Margin="20"/>
