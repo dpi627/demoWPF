@@ -3,6 +3,7 @@
 namespace MVVM.ViewModel
 {
     /***********************************************************************************************************
+     * https://yuchungchuang.wordpress.com/2019/06/26/wpf-mvvm-viewmodel/
      * ViewModelBase 定義為抽象(abstract)類別，只能被繼承，無法實例化，適合做為基底類別
      * 實作 INotifyPropertyChanged 介面。讓 ViewModel 可以通知 View 屬性值的變更
      * ViewModel 可視為 DataBinding 之中的 DataContext
