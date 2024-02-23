@@ -3,10 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MVVM"
+        xmlns:local="clr-namespace:MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="640" Width="320">
-    <Grid>
-
-    </Grid>
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <StackPanel>
+        <Label Content="{Binding Name}"/>
+        <Label Content="{Binding Message}"/>
+        <TextBlock Text="{Binding MyValue}" TextAlignment="Center" Margin="20" />
+        <Slider Name="slider" Value="{Binding MyValue, Mode=TwoWay}" Width="200"/>
+        <Button Content="+1" Click="Button_Click" Width="100" Margin="20"/>
+    </StackPanel>
 </Window>
