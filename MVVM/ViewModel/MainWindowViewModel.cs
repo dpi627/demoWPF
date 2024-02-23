@@ -7,7 +7,7 @@ namespace MVVM.ViewModel
     {
         public MainWindowViewModel()
         {
-            ChangeMessage = new RelayCommand(param=> this.Message = param.ToString());
+            ChangeMessage = new RelayCommand<string>(param=> this.Message = param);
         }
         public string Name { get; set; } = "Unknow";
         public string Message { get; set; } = "Hello, World!";
