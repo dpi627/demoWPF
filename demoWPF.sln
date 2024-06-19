@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login", "Login\Login.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM", "MVVM\MVVM.csproj", "{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYC", "CYC\CYC.csproj", "{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CYC", "CYC\CYC.csproj", "{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterailDesign", "MaterailDesign\MaterailDesign.csproj", "{34CD8898-5D67-48CA-8A1E-1AA628E8DF23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34CD8898-5D67-48CA-8A1E-1AA628E8DF23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34CD8898-5D67-48CA-8A1E-1AA628E8DF23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34CD8898-5D67-48CA-8A1E-1AA628E8DF23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34CD8898-5D67-48CA-8A1E-1AA628E8DF23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
