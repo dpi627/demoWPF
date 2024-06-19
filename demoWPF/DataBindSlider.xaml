@@ -10,10 +10,31 @@
         <local:MyDataContext/>
     </Window.DataContext>
     <StackPanel>
+        <Menu>
+            <MenuItem Header="檔案">
+                <MenuItem Header="新建"/>
+                <MenuItem Header="開啟"/>
+                <MenuItem Header="儲存"/>
+                <MenuItem Header="另存新檔"/>
+                <Separator/>
+                <MenuItem Header="退出"/>
+            </MenuItem>
+            <MenuItem Header="編輯">
+                <MenuItem Header="復原"/>
+                <MenuItem Header="重做"/>
+                <Separator/>
+                <MenuItem Header="剪下"/>
+                <MenuItem Header="複製"/>
+                <MenuItem Header="貼上"/>
+            </MenuItem>
+            <MenuItem Header="幫助">
+                <MenuItem Header="關於"/>
+            </MenuItem>
+        </Menu>
         <TextBlock Text="{Binding MyValue}"/>
-        <Slider Name="slider" 
+        <Slider Name="slider"
                 Value="{Binding MyValue}"/>
-        <Button Content="+1" 
+        <Button Content="+1"
                 Click="Button_Click"/>
     </StackPanel>
 </Window>
