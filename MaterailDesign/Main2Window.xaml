@@ -1,0 +1,36 @@
+﻿<Window x:Class="MaterailDesign.Main2Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaterailDesign"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Main2Window" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <materialDesign:ColorZone Mode="PrimaryMid" Padding="16">
+            <DockPanel>
+                <ToggleButton x:Name="MenuToggleButton"
+                              Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                              IsChecked="{Binding ElementName=DrawerHost, Path=IsLeftDrawerOpen}"
+                              DockPanel.Dock="Left"/>
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">My WPF MVVM App</TextBlock>
+            </DockPanel>
+        </materialDesign:ColorZone>
+
+        <materialDesign:DrawerHost x:Name="DrawerHost" Grid.Row="1">
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <StackPanel Width="220">
+                    <Button Content="Feature 1" Margin="16" Command="{Binding ShowFeature1Command}"/>
+                    <Button Content="Feature 2" Margin="16" Command="{Binding ShowFeature2Command}"/>
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Window>
