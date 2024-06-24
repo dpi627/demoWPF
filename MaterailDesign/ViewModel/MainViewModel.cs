@@ -14,8 +14,16 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     private Page? _currentPage;
 
+    [ObservableProperty]
+    private bool _isLoading;
+
+    public IAsyncRelayCommand NavigateToFeature1AsyncCommand { get; }
+    public IAsyncRelayCommand NavigateToFeature2AsyncCommand { get; }
+
     public MainViewModel()
     {
+        NavigateToFeature1AsyncCommand = new AsyncRelayCommand(NavigateToFeature1Async);
+        NavigateToFeature2AsyncCommand = new AsyncRelayCommand(NavigateToFeature2Async);
         NavigateToFeature1();
     }
 
@@ -33,8 +41,37 @@ public partial class MainViewModel : ObservableObject
         CloseLeftDrawer();
     }
 
+
+
     private void CloseLeftDrawer()
     {
         IsLeftDrawerOpen = false;
+    }
+
+    private async Task NavigateToFeature1Async()
+    {
+        await NavigateToPageAsync<Feature1Page>();
+    }
+
+    private async Task NavigateToFeature2Async()
+    {
+        await NavigateToPageAsync<Feature2Page>();
+    }
+
+    private async Task NavigateToPageAsync<T>() where T : Page
+    {
+        IsLoading = true;
+        IsLeftDrawerOpen = false;
+
+        try
+        {
+            // 模擬頁面載入時間
+            await Task.Delay(1000);
+            CurrentPage = App.AppHost!.Services.GetRequiredService<T>();
+        }
+        finally
+        {
+            IsLoading = false;
+        }
     }
 }

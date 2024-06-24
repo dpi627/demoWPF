@@ -30,11 +30,30 @@
                                    Grid.Row="1">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <StackPanel Width="220">
-                    <Button Content="Feature 1" Margin="16" Command="{Binding NavigateToFeature1Command}"/>
-                    <Button Content="Feature 2" Margin="16" Command="{Binding NavigateToFeature2Command}"/>
+                    <Button Content="Feature 1" Margin="16" Command="{Binding NavigateToFeature1AsyncCommand}"/>
+                    <Button Content="Feature 2" Margin="16" Command="{Binding NavigateToFeature2AsyncCommand}"/>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
+            <Grid>
             <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
+            <materialDesign:Card UniformCornerRadius="14"
+                                     Padding="10"
+                                     materialDesign:ElevationAssist.Elevation="Dp4"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                     Value="0"
+                                     IsIndeterminate="True"
+                                     Width="50"
+                                     Height="50"/>
+                    <TextBlock Text="Loading..."
+                                   HorizontalAlignment="Center"
+                                   Margin="0,8,0,0"/>
+                </StackPanel>
+            </materialDesign:Card>
+            </Grid>
         </materialDesign:DrawerHost>
     </Grid>
 </Window>
