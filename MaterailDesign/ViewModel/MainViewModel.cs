@@ -1,35 +1,40 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using MaterailDesign.View;
 using Microsoft.Extensions.DependencyInjection;
-using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace MaterailDesign.ViewModel;
 
-public class MainViewModel : ObservableObject
+public partial class MainViewModel : ObservableObject
 {
-    private ObservableObject _currentViewModel;
-    public ObservableObject CurrentViewModel
-    {
-        get => _currentViewModel;
-        set => SetProperty(ref _currentViewModel, value);
-    }
+    [ObservableProperty]
+    private bool _isLeftDrawerOpen;
 
-    public ICommand ShowFeature1Command { get; }
-    public ICommand ShowFeature2Command { get; }
+    [ObservableProperty]
+    private Page? _currentPage;
 
     public MainViewModel()
     {
-        ShowFeature1Command = new RelayCommand(ShowFeature1);
-        ShowFeature2Command = new RelayCommand(ShowFeature2);
+        NavigateToFeature1();
     }
 
-    private void ShowFeature1()
+    [RelayCommand]
+    private void NavigateToFeature1()
     {
-        CurrentViewModel = App.AppHost.Services.GetRequiredService<Feature1ViewModel>();
+        CurrentPage = App.AppHost.Services.GetRequiredService<Feature1Page>();
+        CloseLeftDrawer();
     }
 
-    private void ShowFeature2()
+    [RelayCommand]
+    private void NavigateToFeature2()
     {
-        CurrentViewModel = App.AppHost.Services.GetRequiredService<Feature2ViewModel>();
+        CurrentPage = App.AppHost.Services.GetRequiredService<Feature2Page>();
+        CloseLeftDrawer();
+    }
+
+    private void CloseLeftDrawer()
+    {
+        IsLeftDrawerOpen = false;
     }
 }

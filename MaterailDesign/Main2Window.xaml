@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:MaterailDesign"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:vm="clr-namespace:MaterailDesign.ViewModel"
+        d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
         Title="Main2Window" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -17,20 +19,22 @@
             <DockPanel>
                 <ToggleButton x:Name="MenuToggleButton"
                               Style="{StaticResource MaterialDesignHamburgerToggleButton}"
-                              IsChecked="{Binding ElementName=DrawerHost, Path=IsLeftDrawerOpen}"
+                              IsChecked="{Binding IsLeftDrawerOpen}"
                               DockPanel.Dock="Left"/>
                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">My WPF MVVM App</TextBlock>
             </DockPanel>
         </materialDesign:ColorZone>
 
-        <materialDesign:DrawerHost x:Name="DrawerHost" Grid.Row="1">
+        <materialDesign:DrawerHost x:Name="DrawerHost"
+                                   IsLeftDrawerOpen="{Binding IsLeftDrawerOpen}"
+                                   Grid.Row="1">
             <materialDesign:DrawerHost.LeftDrawerContent>
                 <StackPanel Width="220">
-                    <Button Content="Feature 1" Margin="16" Command="{Binding ShowFeature1Command}"/>
-                    <Button Content="Feature 2" Margin="16" Command="{Binding ShowFeature2Command}"/>
+                    <Button Content="Feature 1" Margin="16" Command="{Binding NavigateToFeature1Command}"/>
+                    <Button Content="Feature 2" Margin="16" Command="{Binding NavigateToFeature2Command}"/>
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
-            <ContentControl Content="{Binding CurrentViewModel}"/>
+            <Frame x:Name="MainFrame" Content="{Binding CurrentPage}" NavigationUIVisibility="Hidden"/>
         </materialDesign:DrawerHost>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using MaterailDesign.ViewModel;
+﻿using MaterailDesign.View;
+using MaterailDesign.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Windows;
@@ -22,6 +23,8 @@ public partial class App : Application
                 services.AddTransient<MainViewModel>();
                 services.AddTransient<Feature1ViewModel>();
                 services.AddTransient<Feature2ViewModel>();
+                services.AddTransient<Feature1Page>();
+                services.AddTransient<Feature2Page>();
             })
             .Build();
     }
