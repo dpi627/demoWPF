@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using MaterailDesign.ViewModel;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace MaterailDesign.View
+namespace MaterailDesign.View;
+
+public partial class Feature1Page : Page
 {
-    /// <summary>
-    /// Interaction logic for Feature1Page.xaml
-    /// </summary>
-    public partial class Feature1Page : Page
+    public Feature1Page()
     {
-        public Feature1Page()
+        InitializeComponent();
+        Loaded += Feature1Page_Loaded;
+    }
+
+    private async void Feature1Page_Loaded(object sender, System.Windows.RoutedEventArgs e)
+    {
+        if (DataContext is Feature1ViewModel viewModel)
         {
-            InitializeComponent();
+            await viewModel.InitializeAsync();
         }
     }
 }

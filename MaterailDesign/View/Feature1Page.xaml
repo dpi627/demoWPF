@@ -4,14 +4,39 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:MaterailDesign.View"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
       mc:Ignorable="d"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Feature1Page">
 
-    <Grid>
-        <Grid>
-            <!-- 這裡放置原本 Feature1Window 的內容 -->
-            <TextBlock Text="This is Feature 1" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="MyTextBox"
+                 Grid.Row="0"
+                 Text="{Binding TextBoxContent, UpdateSourceTrigger=PropertyChanged}"
+                 materialDesign:HintAssist.Hint="Enter text here"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                 Margin="0,0,0,10">
+            <i:Interaction.Triggers>
+                <i:DataTrigger Binding="{Binding FocusTextBox}" Value="True">
+                    <i:CallMethodAction TargetObject="{Binding ElementName=MyTextBox}" MethodName="Focus"/>
+                </i:DataTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+
+        <ToggleButton Grid.Row="1"
+                      IsChecked="{Binding IsToggleOn}"
+                      Style="{StaticResource MaterialDesignSwitchToggleButton}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Checked">
+                    <i:InvokeCommandAction Command="{Binding IsToggleOnChanged}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </ToggleButton>
     </Grid>
 </Page>
