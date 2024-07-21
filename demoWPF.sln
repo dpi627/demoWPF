@@ -10,6 +10,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilePathGenerator", "FilePathGenerator\FilePathGenerator.csproj", "{84447719-91A7-4B98-8AD0-7FD3660B1616}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMaterial", "WpfMaterial\WpfMaterial.csproj", "{F1EA022D-415C-4AFB-9E96-107190BC269C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Login", "Login\Login.csproj", "{8000558B-4C0A-4F03-B76F-584FC3A0EB55}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVM", "MVVM\MVVM.csproj", "{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CYC", "CYC\CYC.csproj", "{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,14 @@ Global
 		{F1EA022D-415C-4AFB-9E96-107190BC269C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1EA022D-415C-4AFB-9E96-107190BC269C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1EA022D-415C-4AFB-9E96-107190BC269C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B6E6FDA-B9DF-4553-BD7C-7FEC3CCD78D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FE6ECC9-E4F7-48D7-AE89-7DE374548211}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
