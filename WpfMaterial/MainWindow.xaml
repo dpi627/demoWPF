@@ -1,0 +1,52 @@
+﻿<Window x:Class="WpfMaterial.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMaterial"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Style="{StaticResource MaterialDesignWindow}"
+        d:DataContext="{d:DesignInstance Type=local:MainViewModel, IsDesignTimeCreatable=False}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" Width="480">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+                <Separator/>
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+        </Menu>
+
+        <materialDesign:DrawerHost
+            Grid.Row="1"
+            IsLeftDrawerOpen="{Binding IsLeftDrawerOpened}"
+            LeftDrawerCloseOnClickAway="False">
+
+            <materialDesign:DrawerHost.LeftDrawerContent>
+                <StackPanel Width="150">
+                    <TextBlock Text="Hello"/>
+                    <Button Content="Close"
+                            Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                            CommandParameter="{x:Static Dock.Left}"/>
+                </StackPanel>
+            </materialDesign:DrawerHost.LeftDrawerContent>
+
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Image/>
+                <Button Content="Click Me"/>
+                <Button Content="Open Left"
+                        Command="{x:Static materialDesign:DrawerHost.OpenDrawerCommand}"/>
+            </StackPanel>
+        </materialDesign:DrawerHost>
+    </Grid>
+</Window>
