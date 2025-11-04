@@ -22,6 +22,7 @@
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -33,10 +34,26 @@
             FontWeight="Bold"
             Text="User List" />
 
+        <!--  Button Panel  -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button
+                x:Name="OpenChartsButton"
+                Click="OpenChartsButton_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="4"
+                Width="150"
+                Height="36">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ChartLine" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                    <TextBlock Text="Open Charts Demo" VerticalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
         <!--  DataGrid  -->
         <DataGrid
             x:Name="UsersDataGrid"
-            Grid.Row="1"
+            Grid.Row="2"
             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
             AutoGenerateColumns="False"
