@@ -6,6 +6,8 @@
     xmlns:local="clr-namespace:net9"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:net9.Behaviors"
     Title="User Management"
     Width="800"
     Height="600"
@@ -33,7 +35,6 @@
 
         <!--  DataGrid  -->
         <DataGrid
-            x:Name="UsersDataGrid"
             Grid.Row="1"
             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
@@ -41,8 +42,10 @@
             CanUserAddRows="False"
             CanUserDeleteRows="False"
             IsReadOnly="True"
-            ItemsSource="{Binding Users}"
-            PreviewMouseLeftButtonDown="UsersDataGrid_PreviewMouseLeftButtonDown">
+            ItemsSource="{Binding Users}">
+            <b:Interaction.Behaviors>
+                <behaviors:DataGridNameCellClickBehavior />
+            </b:Interaction.Behaviors>
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="Auto"
