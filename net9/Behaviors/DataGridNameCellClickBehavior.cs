@@ -1,7 +1,7 @@
 using Microsoft.Xaml.Behaviors;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using net9.Models;
 using net9.Views;
@@ -12,50 +12,43 @@ namespace net9.Behaviors
     {
         protected override void OnAttached()
         {
-            base.OnAttached();
-            AssociatedObject.PreviewMouseLeftButtonDown += OnPreviewMouseLeftButtonDown;
+     base.OnAttached();
+      AssociatedObject.Loaded += OnDataGridLoaded;
+    }
+
+        protected override void OnDetaching()
+        {
+  base.OnDetaching();
+  AssociatedObject.Loaded -= OnDataGridLoaded;
         }
 
-     protected override void OnDetaching()
+        private void OnDataGridLoaded(object sender, RoutedEventArgs e)
         {
-       base.OnDetaching();
-            AssociatedObject.PreviewMouseLeftButtonDown -= OnPreviewMouseLeftButtonDown;
-        }
-
-        private void OnPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            // Get the clicked element
-            var dep = (DependencyObject)e.OriginalSource;
-
-          // Find the DataGridCell
-            while (dep != null && dep is not DataGridCell)
-{
-          dep = VisualTreeHelper.GetParent(dep);
-         }
-
-       if (dep is DataGridCell cell)
-  {
-    // Check if the clicked cell is in the Name column
-       var column = cell.Column;
-        if (column != null && column.Header?.ToString() == "Name")
-  {
-  // Get the User object from the row
-        if (AssociatedObject.SelectedItem is User user)
-           {
-     // Show the name selection dialog
- var dialog = new NameSelectionDialog(user.Name)
-       {
-             Owner = Window.GetWindow(AssociatedObject)
- };
-
-        if (dialog.ShowDialog() == true && !string.IsNullOrEmpty(dialog.SelectedName))
-            {
-                // Update the user's name
-      user.Name = dialog.SelectedName;
-  }
-      }
+     // Attach click handlers to all edit buttons
+     AssociatedObject.AddHandler(ButtonBase.ClickEvent, new RoutedEventHandler(OnButtonClick));
      }
-       }
+
+        private void OnButtonClick(object sender, RoutedEventArgs e)
+        {
+        // Check if the clicked button is the edit name button
+     if (e.OriginalSource is Button button && button.Name == "EditNameButton")
+            {
+          // Find the User object from the button's DataContext
+          if (button.DataContext is User user)
+ {
+  // Show the name selection dialog
+      var dialog = new NameSelectionDialog(user.Name)
+           {
+       Owner = Window.GetWindow(AssociatedObject)
+    };
+
+    if (dialog.ShowDialog() == true && !string.IsNullOrEmpty(dialog.SelectedName))
+    {
+            // Update the user's name
+       user.Name = dialog.SelectedName;
+   }
+        }
+   }
         }
     }
 }

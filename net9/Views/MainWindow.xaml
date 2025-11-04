@@ -35,13 +35,14 @@
 
         <!--  DataGrid  -->
         <DataGrid
+            x:Name="UsersDataGrid"
             Grid.Row="1"
             materialDesign:DataGridAssist.CellPadding="13 8 8 8"
             materialDesign:DataGridAssist.ColumnHeaderPadding="8"
             AutoGenerateColumns="False"
             CanUserAddRows="False"
             CanUserDeleteRows="False"
-            IsReadOnly="True"
+            IsReadOnly="False"
             ItemsSource="{Binding Users}">
             <b:Interaction.Behaviors>
                 <behaviors:DataGridNameCellClickBehavior />
@@ -50,15 +51,47 @@
                 <DataGridTextColumn
                     Width="Auto"
                     Binding="{Binding Id}"
-                    Header="ID" />
-                <DataGridTextColumn
+                    Header="ID"
+                    IsReadOnly="True" />
+                <DataGridTemplateColumn
                     Width="*"
-                    Binding="{Binding Name}"
-                    Header="Name" />
+                    Header="Name">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    Grid.Column="0"
+                                    VerticalAlignment="Center"
+                                    Text="{Binding Name}" />
+                                <Button
+                                    x:Name="EditNameButton"
+                                    Grid.Column="1"
+                                    Width="24"
+                                    Height="24"
+                                    Padding="0"
+                                    materialDesign:RippleAssist.IsDisabled="True"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Style="{StaticResource MaterialDesignIconButton}"
+                                    ToolTip="Edit Name">
+                                    <materialDesign:PackIcon
+                                        Width="16"
+                                        Height="16"
+                                        Kind="PencilOutline" />
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding Email}"
-                    Header="Email" />
+                    Header="Email"
+                    IsReadOnly="True" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
