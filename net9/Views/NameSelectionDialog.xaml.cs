@@ -3,26 +3,26 @@ using net9.ViewModels;
 
 namespace net9.Views
 {
-  public partial class NameSelectionDialog : Window
+    public partial class NameSelectionDialog : Window
     {
         private readonly NameSelectionDialogViewModel _viewModel;
 
         public NameSelectionDialog(string currentName)
-      {
-        InitializeComponent();
+        {
+            InitializeComponent();
             _viewModel = new NameSelectionDialogViewModel(currentName);
-     DataContext = _viewModel;
+            DataContext = _viewModel;
 
-      // Subscribe to property changes to close dialog
+            // Subscribe to property changes to close dialog
             _viewModel.PropertyChanged += (s, e) =>
             {
-    if (e.PropertyName == nameof(_viewModel.DialogResult))
+                if (e.PropertyName == nameof(_viewModel.DialogResult) && _viewModel.DialogResult.HasValue)
                 {
-DialogResult = _viewModel.DialogResult;
-    Close();
-    }
+                    DialogResult = _viewModel.DialogResult;
+                    Close();
+                }
             };
-      }
+        }
 
         public string? SelectedName => _viewModel.SelectedName;
     }

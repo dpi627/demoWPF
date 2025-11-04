@@ -13,7 +13,7 @@ namespace net9.ViewModels
         private string? selectedName;
 
         [ObservableProperty]
-        private bool dialogResult;
+        private bool? dialogResult;
 
         public NameSelectionDialogViewModel(string currentName)
         {
