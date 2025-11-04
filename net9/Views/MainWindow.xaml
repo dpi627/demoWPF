@@ -4,51 +4,58 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:net9"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="User Management"
     Width="800"
     Height="600"
     Background="{DynamicResource MaterialDesignPaper}"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextElement.FontWeight="Regular"
+    FontFamily="{DynamicResource MaterialDesignFont}"
     TextElement.FontSize="13"
+    TextElement.FontWeight="Regular"
+    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
     TextOptions.TextFormattingMode="Ideal"
     TextOptions.TextRenderingMode="Auto"
-    FontFamily="{DynamicResource MaterialDesignFont}"
     mc:Ignorable="d">
     <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <TextBlock Grid.Row="0"
-                   Text="User List"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   Margin="0,0,0,20"/>
+        <!--  Header  -->
+        <TextBlock
+            Grid.Row="0"
+            Margin="0,0,0,20"
+            FontSize="24"
+            FontWeight="Bold"
+            Text="User List" />
 
-        <!-- DataGrid -->
-        <DataGrid Grid.Row="1"
-                  ItemsSource="{Binding Users}"
-                  AutoGenerateColumns="False"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  IsReadOnly="True"
-                  materialDesign:DataGridAssist.CellPadding="13 8 8 8"
-                  materialDesign:DataGridAssist.ColumnHeaderPadding="8">
+        <!--  DataGrid  -->
+        <DataGrid
+            x:Name="UsersDataGrid"
+            Grid.Row="1"
+            materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+            materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+            AutoGenerateColumns="False"
+            CanUserAddRows="False"
+            CanUserDeleteRows="False"
+            IsReadOnly="True"
+            ItemsSource="{Binding Users}"
+            PreviewMouseLeftButtonDown="UsersDataGrid_PreviewMouseLeftButtonDown">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" 
-                                    Binding="{Binding Id}" 
-                                    Width="Auto"/>
-                <DataGridTextColumn Header="Name" 
-                                    Binding="{Binding Name}" 
-                                    Width="*"/>
-                <DataGridTextColumn Header="Email" 
-                                    Binding="{Binding Email}" 
-                                    Width="*"/>
+                <DataGridTextColumn
+                    Width="Auto"
+                    Binding="{Binding Id}"
+                    Header="ID" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Name}"
+                    Header="Name" />
+                <DataGridTextColumn
+                    Width="*"
+                    Binding="{Binding Email}"
+                    Header="Email" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

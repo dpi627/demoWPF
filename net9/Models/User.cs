@@ -1,9 +1,16 @@
+using CommunityToolkit.Mvvm.ComponentModel;
+
 namespace net9.Models
 {
-    public class User
+  public partial class User : ObservableObject
     {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Email { get; set; } = string.Empty;
+        [ObservableProperty]
+     private int id;
+
+   [ObservableProperty]
+        private string name = string.Empty;
+
+  [ObservableProperty]
+  private string email = string.Empty;
     }
 }
