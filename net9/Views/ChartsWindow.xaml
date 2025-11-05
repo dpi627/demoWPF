@@ -1,0 +1,107 @@
+<Window x:Class="net9.Views.ChartsWindow"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+   xmlns:viewmodels="clr-namespace:net9.ViewModels"
+  mc:Ignorable="d"
+  Title="LiveCharts2 Demo - MVVM Pattern"
+    Height="800" Width="1200"
+        WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource MaterialDesignPaper}"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+ TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    
+    <Window.DataContext>
+     <viewmodels:ChartsViewModel />
+    </Window.DataContext>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+  <RowDefinition Height="Auto"/>
+       <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+     <!-- Title -->
+    <TextBlock Grid.Row="0" 
+        Text="LiveCharts2 Demo Dashboard"
+      Style="{StaticResource MaterialDesignHeadline4TextBlock}"
+ HorizontalAlignment="Center"
+      Margin="0,0,0,20"/>
+
+        <!-- Charts Container -->
+     <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+    <Grid>
+   <Grid.RowDefinitions>
+<RowDefinition Height="Auto"/>
+      <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+     <Grid.ColumnDefinitions>
+   <ColumnDefinition Width="*"/>
+   <ColumnDefinition Width="*"/>
+             </Grid.ColumnDefinitions>
+
+  <!-- Line Chart -->
+<materialDesign:Card Grid.Row="0" Grid.Column="0" 
+        Margin="5" Padding="15"
+ UniformCornerRadius="8">
+         <StackPanel>
+         <TextBlock Text="Line Chart - Sales &amp; Revenue"
+        Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+          Margin="0,0,0,10"/>
+             <lvc:CartesianChart Series="{Binding LineSeries}"
+    XAxes="{Binding XAxes}"
+    YAxes="{Binding YAxes}"
+     Height="300"/>
+         </StackPanel>
+  </materialDesign:Card>
+
+      <!-- Column Chart -->
+     <materialDesign:Card Grid.Row="0" Grid.Column="1" 
+     Margin="5" Padding="15"
+      UniformCornerRadius="8">
+       <StackPanel>
+ <TextBlock Text="Column Chart - Product Comparison"
+         Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+     Margin="0,0,0,10"/>
+                   <lvc:CartesianChart Series="{Binding ColumnSeries}"
+ XAxes="{Binding XAxes}"
+   YAxes="{Binding YAxes}"
+            Height="300"/>
+  </StackPanel>
+        </materialDesign:Card>
+
+            <!-- Pie Chart -->
+        <materialDesign:Card Grid.Row="1" Grid.Column="0" 
+        Margin="5" Padding="15"
+    UniformCornerRadius="8">
+          <StackPanel>
+     <TextBlock Text="Pie Chart - Browser Market Share"
+  Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+  Margin="0,0,0,10"/>
+        <lvc:PieChart Series="{Binding PieSeries}"
+      Height="300"/>
+  </StackPanel>
+     </materialDesign:Card>
+
+  <!-- Stacked Column Chart -->
+      <materialDesign:Card Grid.Row="1" Grid.Column="1" 
+ Margin="5" Padding="15"
+ UniformCornerRadius="8">
+   <StackPanel>
+             <TextBlock Text="Stacked Column Chart - Quarterly Performance"
+ Style="{StaticResource MaterialDesignHeadline6TextBlock}"
+  Margin="0,0,0,10"/>
+ <lvc:CartesianChart Series="{Binding StackedColumnSeries}"
+ Height="300"/>
+     </StackPanel>
+       </materialDesign:Card>
+
+ </Grid>
+        </ScrollViewer>
+    </Grid>
+</Window>
